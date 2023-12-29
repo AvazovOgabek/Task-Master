@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master</title>
+    <link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <section class="user-info">
+            <div class="user-details">
+                <div class="user-avatar">
+                    
+                    <img src="{{user_profile.profile_picture.url}}" alt="User Avatar">
+                </div>
+                <div class="user-profile">
+                    <h3>{{user_profile.user.first_name}}</h3>
+                    <p>Email: {{user_profile.user.email}}</p>
+                    <p>Location: {{user_profile.location}}</p>
+                </div>
+            </div>
+            <div class="body">
+                <div class="statics">
+                    <div class="statics-name">Done</div>
+                    <div class="statics-level">
+                        <div class="statics-percent" style="width: {{ done_percentage }}%"></div>
+                    </div>
+                    <div class="statics-percent-number">{{ done_percentage|floatformat:"2" }}%</div>
+                </div>
+                <div class="statics">
+                    <div class="statics-name">Is Expected</div>
+                    <div class="statics-level">
+                        <div class="statics-percent" style="width: {{ is_expected_percentage }}%"></div>
+                    </div>
+                    <div class="statics-percent-number">{{ is_expected_percentage|floatformat:"2" }}%</div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section class="tasks">
+            <ul id="task-list">
+                {% for task in tasks %}
+                    <li>
+                        <div class="task-content">
+                            <p>{{task.name}}</p>
+                        </div>
+                        <div class="task-actions">
+                            <form action="{% url 'done_task' task.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit"><i class="fas fa-check"></i></button>
+                            </form>
+                            <form action="{% url 'delete_task' task.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="add-task">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" id="task-input" placeholder="Enter task" autocomplete="off" name="name">
+                <button type="submit"><i class="fas fa-plus"></i></button>
+            </form>
+        </section>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+/* Font and General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+/* Main Section Styles */
+main {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(45% - 20px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+/* User Info Styles */
+.user-info {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(45% - 20px);
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.user-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #2c3e50;
+}
+
+.user-profile h3 {
+    margin: 10px 0;
+    font-size: 28px;
+}
+
+.user-profile p {
+    margin: 5px 0;
+    color: #777;
+    font-size: 16px;
+}
+
+.add-task input[type="text"] {
+    padding: 12px;
+    margin-right: 10px;
+    width: 70%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.add-task button {
+    padding: 12px 20px;
+    border: none;
+    background-color: #2c3e50;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-task button i {
+    font-size: 18px;
+}
+
+.add-task button:hover {
+    background-color: #34495e;
+}
+
+/* Task Actions Styles */
+.task-actions button {
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.task-actions button i {
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.task-actions button:hover i {
+    color: #e74c3c;
+}
+
+.body {
+    padding: 20px;
+}
+
+.statics {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.statics-name {
+    width: 120px;
+    font-size: 18px;
+}
+
+.statics-level {
+    width: 160px;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.statics-percent {
+    background-color: #333;
+    height: 100%;
+}
+
+.statics-percent-number {
+    margin-left: 20px;
+    font-size: 18px;
+}
