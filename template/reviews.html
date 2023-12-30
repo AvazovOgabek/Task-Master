@@ -15,13 +15,20 @@
         <section class="user-info">
             <div class="user-details">
                 <div class="user-avatar">
-                    
                     <img src="{{user_profile.profile_picture.url}}" alt="User Avatar">
                 </div>
                 <div class="user-profile">
                     <h3>{{user_profile.user.first_name}}</h3>
                     <p>Email: {{user_profile.user.email}}</p>
                     <p>Location: {{user_profile.location}}</p>
+                </div>
+                <div class="signout">
+                    <a href="{% url 'signout' %}" style="color: red;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
             <div class="body">
@@ -40,29 +47,26 @@
                     <div class="statics-percent-number">{{ is_expected_percentage|floatformat:"2" }}%</div>
                 </div>
             </div>
-
-
         </section>
 
         <section class="tasks">
             <ul id="task-list">
                 {% for task in tasks %}
-                    <li>
-                        <div class="task-content">
-                            <p>{{task.name}}</p>
-                        </div>
-                        <div class="task-actions">
-                            <form action="{% url 'done_task' task.id %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit"><i class="fas fa-check"></i></button>
-                            </form>
-                            <form action="{% url 'delete_task' task.id %}" method="post">
-                                {% csrf_token %}
-                                <button type="submit"><i class="fas fa-trash-alt"></i></button>
-                            </form>
-
-                        </div>
-                    </li>
+                <li>
+                    <div class="task-content">
+                        <p>{{task.name}}</p>
+                    </div>
+                    <div class="task-actions">
+                        <form action="{% url 'done_task' task.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fas fa-check"></i></button>
+                        </form>
+                        <form action="{% url 'delete_task' task.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                </li>
                 {% endfor %}
             </ul>
         </section>

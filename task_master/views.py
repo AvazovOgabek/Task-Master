@@ -2,13 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, Task
 
-@login_required
+@login_required(login_url='signin')
 def reviews(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     tasks = Task.objects.filter(user=user_profile)
     if user_profile.tasks_count > 0:
         done_percentage = (user_profile.done / user_profile.tasks_count) * 100
-
+        
         is_expected_percentage = ((user_profile.tasks_count - user_profile.done) / user_profile.tasks_count) * 100
 
     else:
@@ -26,7 +26,7 @@ def reviews(request):
 
     return render(request, 'reviews.html', {'user_profile': user_profile, 'tasks': tasks, 'done_percentage': done_percentage, 'is_expected_percentage': is_expected_percentage})
 
-@login_required
+@login_required(login_url='signin')
 def delete_task(request, task_id):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     
@@ -37,7 +37,7 @@ def delete_task(request, task_id):
     task.delete()
     return redirect('reviews')
 
-@login_required
+@login_required(login_url='signin')
 def done_task(request, task_id):
     user_profile = get_object_or_404(UserProfile, user=request.user)
     
